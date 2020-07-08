@@ -9,7 +9,7 @@
     .logo-container {
         width: 70px;
         height: 100%;
-        padding: 25px;
+        padding: 15px;
 
         .logo {
             width: 100%;
@@ -26,10 +26,8 @@
         
         .option {
             padding: 10px 15px;
-        }
-
-        .contact {
-            padding: 10px 15px;
+            font-weight: bold;
+            cursor: pointer;
         }
     }
 }

@@ -5,12 +5,25 @@
     height: 350px;
     align-items: center;
 
+    &:hover {
+        cursor: pointer;
+
+        .button {
+            opacity: 0.5;
+        }
+    }
+
     .image {
         width: 100%;
         height: 95%;
         background-size: cover;
         background-position: center;
         margin-bottom: 5px;
+    }
+
+    .button {
+        position: absolute;
+        opacity: 0;
     }
 
     .collection-footer {

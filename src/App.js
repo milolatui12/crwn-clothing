@@ -4,7 +4,7 @@ import HomePage from './Pages/homepage/HomePage';
 import ShopPage from './Pages/shoppage/ShopPage';
 import SignInAndSignUp from './Pages/sign-in-and-sign-up/SignIn-SignUp'
 import Header from './components/header/Header';
-import { auth } from './firebase/Firebase';
+import { auth, createUserProfileDocument } from './firebase/Firebase';
 import './App.css';
 
 
@@ -20,10 +20,21 @@ class App extends React.Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    this.unsubscribeFromAuth = auth.onAuthStateChanged((user) => {
-      this.setState({
-        currentUser: user
-      })
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+      if(userAuth) {
+        const userRef = await createUserProfileDocument(userAuth);
+
+        userRef.onSnapshot(snapShot => {
+          this.setState({
+            currentUser: {
+              id: snapShot.id,
+              ...snapShot.data()
+            }
+          })
+        });
+      } else {
+        this.setState({currentUser: userAuth})
+      }
     })
   }
 

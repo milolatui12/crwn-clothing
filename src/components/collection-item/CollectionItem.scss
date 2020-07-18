@@ -4,14 +4,9 @@
     flex-direction: column;
     height: 350px;
     align-items: center;
-
-    &:hover {
-        cursor: pointer;
-
-        .button {
-            opacity: 0.5;
-        }
-    }
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
 
     .image {
         width: 100%;
@@ -21,9 +16,23 @@
         margin-bottom: 5px;
     }
 
-    .button {
+    .custom-button {
+        width: 80%;
+        opacity: 0.7;
         position: absolute;
-        opacity: 0;
+        top: 255px;
+        display: none;
+    }
+
+    &:hover {
+        .image {
+            opacity: 0.8;
+        }
+
+        .custom-button {
+            opacity: 0.85;
+            display: flex;
+        }
     }
 
     .collection-footer {

@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import { selectCurrentUser } from './redux/user/user-selectors';
 import HomePage from './Pages/homepage/HomePage';
 import ShopPage from './Pages/shoppage/ShopPage';
 import SignInAndSignUp from './Pages/sign-in-and-sign-up/SignIn-SignUp'
@@ -54,7 +55,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  currentUser: state.user.currentUser
+  currentUser: selectCurrentUser(state)
 })
 
 const mapDispatchToProps = (dispatch) => ({

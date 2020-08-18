@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import { selectCurrentUser } from './redux/user/user-selectors';
-import SignInAndSignUp from './Pages/sign-in-and-sign-up/signin-signup'
 import Header from './components/header/header';
+import SignInAndSignUp from './Pages/sign-in-and-sign-up/signin-signup'
 import HomePage from './Pages/homepage/homepage';
 import ShopPage from './Pages/shoppage/shoppage';
 import CheckoutPage from './Pages/checkout/checkout';

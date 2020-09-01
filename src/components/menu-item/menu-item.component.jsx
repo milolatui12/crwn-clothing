@@ -4,7 +4,6 @@ import { withRouter } from 'react-router-dom';
 import { MenuItemContainer, BackgroundImageContainer, ContentContainer, Title, SubTitle } from './menu-item.styles';
 
 const MenuItem = ({ title, imageUrl, size, history, linkUrl, match }) => {
-  console.log(match)
   return (
     <MenuItemContainer
       className={`${size}`}

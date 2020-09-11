@@ -5,8 +5,9 @@ import { selectCollection } from '../../redux/shop/shop.selectors';
 
 import { CollectionPageContainer, Title, ItemsContainer, AddCollectionItem } from './collection.styles';
 
-const CollectionPage = ({ collection }) => {
+const CollectionPage = ({ collection, match }) => {
   const { title, items } = collection;
+  console.log(match)
   return (
     <CollectionPageContainer>
       <Title>{title}</Title>
@@ -19,8 +20,8 @@ const CollectionPage = ({ collection }) => {
   );
 };
 
-const mapStateToProps = (state, ownProps) => ({
-  collection: selectCollection(ownProps.match.params.collectionId)(state)
-});
+const mapStateToProps = (state, ownProps) => ({                           //when it initialize is and renders it
+  collection: selectCollection(ownProps.match.params.collectionId)(state) //expects there to be some collections
+});                                                                       //in order for it to actually render any state 
 
 export default connect(mapStateToProps)(CollectionPage);

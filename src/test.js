@@ -27,29 +27,14 @@ iteration.value.then(
 )
 
 
-
-function* generatorFunc() {
-    console.log('This will be executed first')
-    yield 'Hello'
-    console.log('I will be printed after the pause')
-    yield "World"
-}
-
-const generatorObj = generatorFunc();
-
-generatorObj.next()
-
-console.log(generatorObj.next().value)
-console.log(generatorObj.next().value)
-console.log(generatorObj.next().value)
-
-function test() {
-    console.log('Anything')
-    console.log('Anything')
-    console.log('Anything')
-    console.log('Anything')
-}
-
-const testObj = test()
-console.log(typeof(testObj))
-asdfajfa;sflakjf;l
+function * naturalNumbers() {
+    let num = 1;
+    while (true) {
+      yield num;
+      num = num + 1
+    }
+  }
+  const numbers = naturalNumbers();
+  while(numbers.next().value) {
+      console.log(numbers.next().value)
+  }

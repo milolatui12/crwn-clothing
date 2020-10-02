@@ -28,6 +28,12 @@ const userReducer = (state = INITIAL_STATE, action) => {
         ...state,
         error: action.payload
       }
+    case UserActionTypes.SIGN_UP_FAILURE:
+      alert(action.payload.message)
+      return {
+        ...state,
+        error: action.payload
+      }
     default:
       return state;
   }

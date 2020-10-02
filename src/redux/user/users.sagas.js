@@ -6,7 +6,8 @@ import {
   signInSuccess,
   signInFailure,
   signOutSuccess,
-  signOutFailure
+  signOutFailure,
+  signUpFailure
 } from "./user.actions";
 
 import {
@@ -16,9 +17,9 @@ import {
   getCurrentUser
 } from "../../firebase/firebase.utils";
 
-function* getSnapshotFromUserAuth(userAuth) {
+function* getSnapshotFromUserAuth(userAuth, additionalData) {
   try {
-    const userRef = yield call(createUserProfileDocument, userAuth);
+    const userRef = yield call(createUserProfileDocument, userAuth, additionalData);
     const userSnapshot = yield userRef.get();
     yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() }));
   } catch (error) {
@@ -41,6 +42,15 @@ function* signInWithEmail({ payload: { email, password } }) {
     yield getSnapshotFromUserAuth(user);
   } catch (error) {
     yield put(signInFailure(error));
+  }
+}
+
+function* signUpWithEmail({ payload: { displayName, email, password } }) {
+  try {
+    const { user } = yield auth.createUserWithEmailAndPassword(email, password);
+    yield getSnapshotFromUserAuth(user, { displayName });
+  } catch (error) {
+    yield put(signUpFailure(error));
   }
 }
 
@@ -71,6 +81,10 @@ export function* onEmailSignINStart() {
   yield takeLatest(UserActionTypes.EMAIL_SIGN_IN_START, signInWithEmail);
 }
 
+export function* onSignUpStart() {
+  yield takeLatest(UserActionTypes.SIGN_UP_START, signUpWithEmail);
+}
+
 export function* onSignOutStart() {
   yield takeLatest(UserActionTypes.SIGN_OUT_START, signOut);
 }
@@ -84,6 +98,7 @@ export function* userSagas() {
     call(onGoogleSignInStart),
     call(onEmailSignINStart),
     call(onCheckUserSession),
-    call(onSignOutStart)
+    call(onSignOutStart),
+    call(onSignUpStart)
   ]);
 }

@@ -55,3 +55,7 @@ export const signUpFailure = error => ({
 export const checkUserSession = () => ({
   type: UserActionTypes.CHECK_USER_SESSION
 })
+
+export const clearError = () => ({
+  type: UserActionTypes.CLEAR_ERROR
+})

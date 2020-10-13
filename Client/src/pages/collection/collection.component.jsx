@@ -5,9 +5,8 @@ import { selectCollection } from '../../redux/shop/shop.selectors';
 
 import { CollectionPageContainer, Title, ItemsContainer, AddCollectionItem } from './collection.styles';
 
-const CollectionPage = ({ collection, match }) => {
+const CollectionPage = ({ collection }) => {
   const { title, items } = collection;
-  console.log(match)
   return (
     <CollectionPageContainer>
       <Title>{title}</Title>

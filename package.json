@@ -6,14 +6,14 @@
     "npm": "6.13.4"
   },
   "scripts": {
-    "client": "cd client && npm start",
-    "client1": "cd client && npm run len",
+    "client": "cd Client && npm start",
+    "client1": "cd Client && npm run len",
     "server": "nodemon server.js",
-    "build": "cd client && npm run build",
+    "build": "cd Client && npm run build",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "dev1": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client1\"",
     "start": "node server.js",
-    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+    "heroku-postbuild": "cd Client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "repository": {
     "type": "git",
